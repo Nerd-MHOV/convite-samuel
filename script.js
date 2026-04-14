@@ -46,7 +46,7 @@ function updateWhatsAppButton(nome) {
     const whatsappBtn = document.getElementById('whatsapp-btn');
     const nomeText = nome ? nome : 'Eu';
     const message = `Olá! ${nomeText} confirmo presença no Chá do Samuel! 🐼🎋`;
-    const phoneNumber = '5511999999999'; // ALTERE PARA O NÚMERO REAL
+    const phoneNumber = '5514996017097';
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     whatsappBtn.href = whatsappUrl;
 }
