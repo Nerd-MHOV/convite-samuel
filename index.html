@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chá do Samuel - Convite Interativo</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="panda-loader">
+            <div class="panda-face">
+                <div class="ear ear-left"></div>
+                <div class="ear ear-right"></div>
+                <div class="face">
+                    <div class="eye eye-left"></div>
+                    <div class="eye eye-right"></div>
+                    <div class="nose"></div>
+                </div>
+            </div>
+            <p>Carregando...</p>
+        </div>
+    </div>
+
+    <!-- Particles Canvas -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Music Control -->
+    <div class="music-control" id="music-control">
+        <svg class="music-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+        </svg>
+        <span class="music-text">Música</span>
+    </div>
+    <audio id="background-music" loop>
+        <source src="https://cdn.pixabay.com/download/audio/2022/03/10/audio_2c4e0b1d22.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="bamboo bamboo-left"></div>
+        <div class="bamboo bamboo-right"></div>
+
+        <!-- Bamboo decorativo -->
+        <img src="4.png" alt="Bambu" class="bamboo-decoration bamboo-decoration-left" loading="lazy">
+        <img src="4.png" alt="Bambu" class="bamboo-decoration bamboo-decoration-right" loading="lazy">
+
+        <div class="hero-content">
+            <div class="panda-container" id="panda-interactive">
+                <div class="panda-main">
+                    <div class="panda-ear panda-ear-left"></div>
+                    <div class="panda-ear panda-ear-right"></div>
+                    <div class="panda-head">
+                        <div class="panda-eye panda-eye-left">
+                            <div class="pupil" id="pupil-left"></div>
+                        </div>
+                        <div class="panda-eye panda-eye-right">
+                            <div class="pupil" id="pupil-right"></div>
+                        </div>
+                        <div class="panda-nose"></div>
+                        <div class="panda-mouth"></div>
+                        <div class="panda-blush panda-blush-left"></div>
+                        <div class="panda-blush panda-blush-right"></div>
+                    </div>
+                    <div class="panda-body">
+                        <div class="panda-arm panda-arm-left"></div>
+                        <div class="panda-arm panda-arm-right"></div>
+                        <div class="bamboo-stick"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="title-container">
+                <h1 class="title-cha">Chá do</h1>
+                <h2 class="title-samuel" id="animated-title">Samuel</h2>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Welcome Section -->
+    <section class="welcome-section section-animated">
+        <div class="container">
+            <div class="circle-bg"></div>
+
+            <!-- Decorative Pandas -->
+            <img src="3.png"
+                 alt="Panda"
+                 class="decorative-panda panda-float-left"
+                 loading="lazy">
+            <img src="2.png"
+                 alt="Panda"
+                 class="decorative-panda panda-float-right"
+                 loading="lazy">
+
+            <div class="welcome-content">
+                <p class="welcome-text">
+                    Deus nos presenteou com mais um milagre:<br>
+                    <strong>nosso menino está a caminho!</strong>
+                </p>
+                <p class="welcome-message">
+                    <span id="guest-name"></span>Com muita alegria, convidamos você para<br>
+                    celebrar conosco a chegada do nosso pequeno.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Countdown Section -->
+    <section class="countdown-section section-animated">
+        <div class="container">
+            <h3 class="section-title">Contagem Regressiva</h3>
+
+            <!-- Pandas decorativos no countdown -->
+            <img src="5.png"
+                 alt="Panda"
+                 class="countdown-panda panda-left"
+                 loading="lazy">
+            <img src="2.png"
+                 alt="Panda"
+                 class="countdown-panda panda-right"
+                 loading="lazy">
+
+            <div class="countdown" id="countdown">
+                <div class="countdown-item">
+                    <span class="countdown-value" id="days">00</span>
+                    <span class="countdown-label">Dias</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="hours">00</span>
+                    <span class="countdown-label">Horas</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="minutes">00</span>
+                    <span class="countdown-label">Minutos</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="seconds">00</span>
+                    <span class="countdown-label">Segundos</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Details Section -->
+    <section class="event-section section-animated">
+        <div class="container">
+            <!-- Panda com bambu -->
+            <img src="3.png"
+                 alt="Panda"
+                 class="event-panda"
+                 loading="lazy">
+
+            <div class="date-badge">
+                <span class="date-month">MAIO</span>
+                <span class="date-day">30</span>
+                <span class="date-year">2026</span>
+            </div>
+
+            <div class="event-time">
+                <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                </svg>
+                <p>A realizar-se às <strong>16 horas</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="location-section section-animated">
+        <div class="container">
+            <h3 class="section-title">Local do Evento</h3>
+
+            <!-- Pandas no mapa -->
+            <img src="5.png"
+                 alt="Panda"
+                 class="location-panda panda-peek-left"
+                 loading="lazy">
+            <img src="2.png"
+                 alt="Panda"
+                 class="location-panda panda-peek-right"
+                 loading="lazy">
+
+            <div class="location-card">
+                <div class="location-icon-wrapper">
+                    <svg class="location-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    </svg>
+                </div>
+                <div class="location-details">
+                    <p class="location-address">Rua Marino Osti 140, São Crispim</p>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Rua+Marino+Osti+140+São+Crispim"
+                       target="_blank"
+                       class="btn btn-map">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        </svg>
+                        Ver no Mapa
+                    </a>
+                </div>
+            </div>
+
+            <div class="map-container">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3600.0!2d-46.0!3d-23.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDAwJzAwLjAiUyA0NsKwMDAnMDAuMCJX!5e0!3m2!1spt-BR!2sbr!4v1234567890!5m2!1spt-BR!2sbr"
+                    width="100%"
+                    height="300"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gift Suggestion Section -->
+    <section class="gift-section section-animated">
+        <div class="container">
+            <h3 class="section-title">Sugestão de Presente</h3>
+
+            <div class="gift-box" id="gift-box">
+                <div class="gift-lid"></div>
+                <div class="gift-container">
+                    <div class="gift-bow"></div>
+                    <div class="gift-item" id="gift-item">
+                        <p class="gift-label">Para o pequeno Samuel:</p>
+                        <p class="gift-name" id="gift-name">Sabonete Líquido</p>
+                    </div>
+                </div>
+                <div class="sparkles">
+                    <span class="sparkle"></span>
+                    <span class="sparkle"></span>
+                    <span class="sparkle"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP Section -->
+    <section class="rsvp-section section-animated">
+        <div class="container">
+            <h3 class="section-title">Confirme sua Presença</h3>
+
+            <div class="rsvp-content">
+                <p class="rsvp-text">
+                    Sua presença é muito importante para nós!<br>
+                    Confirme pelo WhatsApp e celebre conosco.
+                </p>
+
+                <div class="panda-small-left"></div>
+                <div class="panda-small-right"></div>
+
+                <a href="#" id="whatsapp-btn" class="btn btn-whatsapp">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                    </svg>
+                    Confirmar Presença
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Feito com ❤️ para celebrar a chegada do Samuel</p>
+            <div class="footer-pandas">
+                <span class="footer-panda">🐼</span>
+                <span class="bamboo-emoji">🎋</span>
+                <span class="footer-panda">🐼</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
